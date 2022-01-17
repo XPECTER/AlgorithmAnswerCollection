@@ -1,3 +1,6 @@
+# Runtime: 38 ms, faster than 48.94% of Python3 online submissions for Most Common Word.
+# Memory Usage: 14.3 MB, less than 47.19% of Python3 online submissions for Most Common Word.
+
 import re
 from collections import Counter
 
