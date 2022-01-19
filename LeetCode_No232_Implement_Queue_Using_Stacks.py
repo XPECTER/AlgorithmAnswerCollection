@@ -1,43 +1,37 @@
-# Runtime: 28 ms, faster than 85.56% of Python3 online submissions for Implement Queue using Stacks.
-# Memory Usage: 14.3 MB, less than 44.63% of Python3 online submissions for Implement Queue using Stacks.
-
-class Node:
-    def __init__(self, val, pNext=None):
-        self.val = val
-        self.pNext = pNext
-
+# Runtime: 41 ms, faster than 30.59% of Python3 online submissions for Implement Queue using Stacks.
+# Memory Usage: 14.4 MB, less than 10.53% of Python3 online submissions for Implement Queue using Stacks.
 
 class MyQueue:
 
     def __init__(self):
-        self.head = None
+        self.stack1 = []
+        self.stack2 = []
 
     def push(self, x: int) -> None:
-        if not self.head:
-            self.head = Node(x, None)
+        if not self.stack1:
+            self.stack1.append(x)
             return
 
-        node = self.head
-        while node.pNext:
-            node = node.pNext
+        while self.stack1:
+            self.stack2.append(self.stack1.pop())
 
-        node.pNext = Node(x, None)
+        self.stack1.append(x)
+
+        while self.stack2:
+            self.stack1.append(self.stack2.pop())
         return
 
     def pop(self) -> int:
-        if not self.head:
+        if self.empty():
             return None
 
-        node = self.head
-        self.head = self.head.pNext
-
-        return node.val
+        return self.stack1.pop()
 
     def peek(self) -> int:
-        return self.head.val
+        return None if not self.stack1 else self.stack1[-1]
 
     def empty(self) -> bool:
-        return not self.head
+        return True if not self.stack1 else False
 
 
 if __name__ == "__main__":

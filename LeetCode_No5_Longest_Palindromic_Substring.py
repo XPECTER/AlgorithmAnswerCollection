@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/longest-palindromic-substring/
+
 class Solution:
     # 첫번째 풀이
     # Runtime: 1221 ms, faster than 51.07% of Python3 online submissions for Longest Palindromic Substring.

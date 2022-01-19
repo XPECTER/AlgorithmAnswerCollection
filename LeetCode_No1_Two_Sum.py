@@ -1,4 +1,4 @@
-# 문제. 타겟 숫자를 만들 수 있는 두 수의 인덱스를 구하기
+# https://leetcode.com/problems/two-sum/
 
 class Solution:
     # Runtime: 62 ms, faster than 56.65% of Python3 online submissions for Two Sum.

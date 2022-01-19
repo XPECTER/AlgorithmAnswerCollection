@@ -108,16 +108,17 @@ class MyCircularQueue:
 
 
 if __name__ == "__main__":
-    # queue = MyCircularQueue(3)
-    # print(queue.enQueue(1))
-    # print(queue.enQueue(2))
-    # print(queue.enQueue(3))
-    # print(queue.enQueue(4))
-    # print(queue.Rear())
-    # print(queue.isFull())
-    # print(queue.deQueue())
-    # print(queue.enQueue(4))
-    # print(queue.Rear())
+    queue = MyCircularQueue(3)
+    print(queue.enQueue(1))
+    print(queue.enQueue(2))
+    print(queue.enQueue(3))
+    print(queue.enQueue(4))
+    print(queue.Rear())
+    print(queue.isFull())
+    print(queue.deQueue())
+    print(queue.enQueue(4))
+    print(queue.Rear())
+    print("\n")
 
     queue = MyCircularQueue(6)
     print(queue.enQueue(6))

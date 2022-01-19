@@ -54,5 +54,44 @@
 #             print("NO")
 #
 
-stack = [4, 3, 7, 2, 1]
-per = [8, 6, 5, 1, 2, 7, 3, 4]
+# stack = [4, 3, 7, 2, 1]
+# per = [8, 6, 5, 1, 2, 7, 3, 4]
+
+
+from collections import deque
+
+test_case = input()
+
+# sys.stdin.readline() << 오
+
+for _ in range(int(test_case)):
+    amount_doc, target = map(int, input().split())
+    importance = deque([(idx, val) for idx, val in enumerate([x for x in map(int, input().split())])])
+    print(importance)
+
+    if amount_doc == 1:
+        print(1)
+        continue
+
+    cnt = 1
+    while True:
+        m_p = max(importance, key=lambda x: (x[1]))
+        print(m_p)
+
+        while importance[0] != m_p:
+            importance.append(importance.popleft())
+            print(importance)
+
+        if importance[0][0] == target:
+            print(cnt)
+            break
+        else:
+            importance.popleft()
+            cnt += 1
+
+    # importance.append(importance.popleft())
+    # importance.append(importance.popleft())
+    #
+    # m_p = max(importance, key=lambda x: (x[1]))
+    # print(m_p)
+
