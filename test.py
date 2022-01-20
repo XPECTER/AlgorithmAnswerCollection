@@ -58,36 +58,36 @@
 # per = [8, 6, 5, 1, 2, 7, 3, 4]
 
 
-from collections import deque
-
-test_case = input()
-
-# sys.stdin.readline() << 오
-
-for _ in range(int(test_case)):
-    amount_doc, target = map(int, input().split())
-    importance = deque([(idx, val) for idx, val in enumerate([x for x in map(int, input().split())])])
-    print(importance)
-
-    if amount_doc == 1:
-        print(1)
-        continue
-
-    cnt = 1
-    while True:
-        m_p = max(importance, key=lambda x: (x[1]))
-        print(m_p)
-
-        while importance[0] != m_p:
-            importance.append(importance.popleft())
-            print(importance)
-
-        if importance[0][0] == target:
-            print(cnt)
-            break
-        else:
-            importance.popleft()
-            cnt += 1
+# from collections import deque
+#
+# test_case = input()
+#
+# # sys.stdin.readline() << 오
+#
+# for _ in range(int(test_case)):
+#     amount_doc, target = map(int, input().split())
+#     importance = deque([(idx, val) for idx, val in enumerate([x for x in map(int, input().split())])])
+#     print(importance)
+#
+#     if amount_doc == 1:
+#         print(1)
+#         continue
+#
+#     cnt = 1
+#     while True:
+#         m_p = max(importance, key=lambda x: (x[1]))
+#         print(m_p)
+#
+#         while importance[0] != m_p:
+#             importance.append(importance.popleft())
+#             print(importance)
+#
+#         if importance[0][0] == target:
+#             print(cnt)
+#             break
+#         else:
+#             importance.popleft()
+#             cnt += 1
 
     # importance.append(importance.popleft())
     # importance.append(importance.popleft())
@@ -95,3 +95,15 @@ for _ in range(int(test_case)):
     # m_p = max(importance, key=lambda x: (x[1]))
     # print(m_p)
 
+
+def solution(mylist):
+    answer = [[0 for i in range(len(mylist))] for i in range(len(mylist))]
+
+    for i in range(len(mylist)):
+        for j in range(len(mylist)):
+            answer[i][j] = mylist[j][i]
+
+    return answer
+
+
+solution([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
