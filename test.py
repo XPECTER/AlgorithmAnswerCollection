@@ -96,14 +96,16 @@
     # print(m_p)
 
 
-def solution(mylist):
-    answer = [[0 for i in range(len(mylist))] for i in range(len(mylist))]
+# def solution(mylist):
+#     answer = [[0 for i in range(len(mylist))] for i in range(len(mylist))]
+#
+#     for i in range(len(mylist)):
+#         for j in range(len(mylist)):
+#             answer[i][j] = mylist[j][i]
+#
+#     return answer
 
-    for i in range(len(mylist)):
-        for j in range(len(mylist)):
-            answer[i][j] = mylist[j][i]
 
-    return answer
+import itertools
 
-
-solution([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(list(map("".join, list(itertools.permutations('ABCD')))))
