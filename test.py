@@ -1,111 +1,68 @@
-# a = [1,2,3,4]
+# from itertools import combinations, product
+# import sys
 #
-# print(id(a))
+#
+# # L, C = map(int, sys.stdin.readline().split())
+# L, C = 4, 6
+# v = {'a', 'e', 'i', 'o', 'u'}   # 필터. 입력받은 문자가 모음이면 모음 List로 들어간다. 5개밖에 안되서 list를 써도 될듯?
+# con = []        # 자음 List
+# vow = []        # 모음 List
+# answer = []     # 완성된 암호 List
 #
 #
-# b = [1,2,3,4]
-#
-# # if a is b:
-# #     print(True)
-# # else:
-# #     print(False)
-# #
-# # if a == b:
-# #     print(True)
-# # else:
-# #     print(False)
-#
-# print(id(a[0]), id(a[1]),id(a[2]) ,id(a[3]))
-#
-# a[0] = [1,2,3]
-#
-# print(id(a[0]), id(a[1]),id(a[2]) ,id(a[3]))
-#
-# print(a)
-#
-# a[0] = 1
-#
-# print(id(a[0]), id(a[1]),id(a[2]) ,id(a[3]))
-#
-# a[0] += 3
-#
-# print(id(a[0]), id(a[1]),id(a[2]) ,id(a[3]))
-
-# n = 6
-# strs = ['(())())', '(((()())()', '(()())((()))', '((()()(()))(((())))()', '()()()()(()()())()', '(()((())()(']
-#
-# for i in range(int(n)):
-#     # str = input()
-#     str = strs[i]
-#     stack = []
-#     for c in str:
-#         if c == "(":
-#             stack.append(c)
-#         else:
-#             if stack:
-#                 stack.pop()
-#             else:
-#                 print("NO")
-#                 break
+# l = ['a', 'c', 's', 'i', 't', 'w']
+# # for c in sys.stdin.readline().split():    # 백준에서 입력받기 위함
+# for c in l:                                 # 임시로 배열을 만듦
+#     if c in v:
+#         vow.append(c)   # 모음이면 vow에 append하고,
 #     else:
-#         if not stack:
-#             print("YES")
-#         else:
-#             print("NO")
+#         con.append(c)   # 자음이면 con에 append한다.
 #
-
-# stack = [4, 3, 7, 2, 1]
-# per = [8, 6, 5, 1, 2, 7, 3, 4]
-
-
-# from collections import deque
+# cnt = 1     # 모음이 1개일때 부터 while 진입
+# while cnt <= len(vow) and L - cnt >= 2:         # 모음은 1개 이상, 자음은 2개 이상 있어야 한다.
+#     ex_c = list(map("".join, list(combinations(con, L - cnt))))     # 자음이 L-1개, L-2개...의 조합을 구한다
+#     ex_v = list(map("".join, list(combinations(vow, cnt))))         # 모음이 1개, 2개... 의 조합을 구한다.
+#     answer.extend(list(map("".join, list(product(ex_v, ex_c)))))    # product는 두 리스트의 조합이다. 위의 조합 2개를 조합한다.
+#     cnt += 1    # 모음의 개수를 1개 늘려서 더 구한다.
+#     print("자음 조합 : ", ex_c)
+#     print("모음 조합 : ", ex_v)
+#     print("모음이 %d개 일 때 조합 : " % (cnt - 1), list(map("".join, list(product(ex_v, ex_c)))))
+#     print("------------------------------------------------")
 #
-# test_case = input()
-#
-# # sys.stdin.readline() << 오
-#
-# for _ in range(int(test_case)):
-#     amount_doc, target = map(int, input().split())
-#     importance = deque([(idx, val) for idx, val in enumerate([x for x in map(int, input().split())])])
-#     print(importance)
-#
-#     if amount_doc == 1:
-#         print(1)
-#         continue
-#
-#     cnt = 1
-#     while True:
-#         m_p = max(importance, key=lambda x: (x[1]))
-#         print(m_p)
-#
-#         while importance[0] != m_p:
-#             importance.append(importance.popleft())
-#             print(importance)
-#
-#         if importance[0][0] == target:
-#             print(cnt)
-#             break
-#         else:
-#             importance.popleft()
-#             cnt += 1
-
-    # importance.append(importance.popleft())
-    # importance.append(importance.popleft())
-    #
-    # m_p = max(importance, key=lambda x: (x[1]))
-    # print(m_p)
+# print("모든 조합 : ", answer)
+# print("정렬 후 하나씩 출력")
+# for word in sorted(list(map("".join, (map(sorted, answer))))):      # 모든 원소마다 정렬하고(aswi -> aisw), 전체적으로 한 번 더 정렬한다.([acit ,aisw])
+#     print(word)
 
 
-# def solution(mylist):
-#     answer = [[0 for i in range(len(mylist))] for i in range(len(mylist))]
+# import sys
 #
-#     for i in range(len(mylist)):
-#         for j in range(len(mylist)):
-#             answer[i][j] = mylist[j][i]
+# input = sys.stdin.readline
 #
-#     return answer
+# N = int(input())
+# nodes = [[] for i in range(N)]
+#
+# for idx, val in enumerate(map(int, input().split())):
+#     if val == -1: continue
+#     nodes[val] += [idx]
+#
+# print(nodes)
+# r = int(input())
+#
+# def remove(rem):
+#     for i in nodes[rem]:
+#         remove(i)
+#     nodes[rem] = None
+#
+# remove(r)
+#
+# print(nodes)
+# print(sum([1 if i in ([], [r]) else 0 for i in nodes]))
 
+# lst = [1 if [i] in ([1,3], [0,2]) else 0 for i in range(5)]
+# print(lst)
 
-import itertools
-
-print(list(map("".join, list(itertools.permutations('ABCD')))))
+if [] in [[], [1, 2]]:
+    print(True)
+else:
+    print(False)
