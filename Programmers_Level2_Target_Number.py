@@ -1,3 +1,6 @@
+import collections
+
+
 def solution(numbers, target):
     answer = []
 
@@ -16,7 +19,6 @@ def solution(numbers, target):
     return len(answer)
 
 
-# print(solution([1, 1, 1, 1, 1], 3)) #return 5
 assert solution([1, 1, 1, 1, 1], 3) == 5
 
 # 수정 후

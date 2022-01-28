@@ -62,7 +62,60 @@
 # lst = [1 if [i] in ([1,3], [0,2]) else 0 for i in range(5)]
 # print(lst)
 
-if [] in [[], [1, 2]]:
-    print(True)
-else:
-    print(False)
+# if [] in [[], [1, 2]]:
+#     print(True)
+# else:
+#     print(False)
+
+# A = int(input())
+# B = int(input())
+# answer = [str(A*B)]
+# while B > 0:
+#     answer.append(str((B % 10) * A))
+#     B //= 10
+# print("\n".join(answer[1:]+answer[:1]))
+
+
+# A = int(input())
+# if A % 4 == 0 and A % 100 != 0 or A % 400 == 0:
+#     print(1)
+# else:
+#     print(0)
+
+
+# h, m = map(int, input().split())
+# if m >= 45:
+#     print(f'{h} {m-45}')
+# else:
+#     h = h-1 if h > 0 else 23
+#     m = m+15 if m < 45 else m+15-60
+#     print(f'{h} {m}')
+
+
+import sys
+from collections import defaultdict
+case = int(input())
+answer = 0
+
+def check_word(word: str) -> bool:
+    if len(word) <= 1:
+        return True
+
+    dic = defaultdict(list)
+
+    for i in range(len(word)):
+        dic[word[i]].append(i)
+
+        if len(dic[word[i]]) <= 1 or i-1 in dic[word[i]]:
+            continue
+        else:
+            return False
+
+    return True
+
+for i in range(case):
+    word = sys.stdin.readline().rstrip('\n')
+    if check_word(word):
+        answer += 1
+
+print(answer)

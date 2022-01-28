@@ -37,3 +37,4 @@ for i in range(1, N + 1):
 print(*answer)
 
 
+# python으로는 시간초과가 나온다
