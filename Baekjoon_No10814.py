@@ -7,7 +7,7 @@ lst = []
 
 for _ in range(N):
     age, name = input().rstrip().split()
-    lst.append((int(age), name))
+    lst.append((int(age), name))        # int로 안바꿔주면 사전 순 비교를 해버린다
 
 lst.sort(key=lambda x: x[0])
 for elem in lst:
