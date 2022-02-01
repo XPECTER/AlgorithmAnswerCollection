@@ -52,8 +52,35 @@ class Sort:
 
         return lst
 
+    def merge(self, l_lst: list, r_lst: list) -> list:
+        i = j = 0
+        result = []
+
+        while i < len(l_lst) and j < len(r_lst):
+            if l_lst[i] < r_lst[j]:
+                result.append(l_lst[i])
+                i += 1
+            else:
+                result.append(r_lst[j])
+                j += 1
+
+        if i < len(l_lst):
+            result.extend(l_lst[i:])
+
+        if j < len(r_lst):
+            result.extend(r_lst[j:])
+
+        return result
+
     def merge_sort(self, lst: list) -> list:
-        return lst
+        if len(lst) <= 1:
+            return lst
+
+        mid = len(lst) // 2
+        l_lst = lst[:mid]
+        r_lst = lst[mid:]
+
+        return self.merge(self.merge_sort(l_lst), self.merge_sort(r_lst))
 
     def heap_sort(self, lst: list) -> list:
         return lst
@@ -64,3 +91,5 @@ class Sort:
 # assert Sort().bubble_sort([-1, 5, 3, 4, 0, 8, -3]) == [-3, -1, 0, 3, 4, 5, 8]
 # assert Sort().quick_sort([-1, 5, 3, 4, 0, 8, -3], 0, 6) == [-3, -1, 0, 3, 4, 5, 8]
 # print(Sort().quick_sort([45, 39, 98, 15, 52, 44, 33, 28, 40, 38, 77, 68, 11, 43], 0, 13))
+print(Sort().merge_sort([45, 39, 98, 15, 52, 44, 33, 28, 40, 38, 77, 68, 11, 43]))
+print(Sort().merge_sort([45, 3]))

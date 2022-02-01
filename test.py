@@ -125,8 +125,19 @@
 # # print("".join(sorted(input(), reverse=True)))
 # print(*sorted(input())[::-1], sep='')
 
-import sys
+# import sys
+#
+# lst = sys.stdin.readlines()[1:]
+# lst.sort(key=lambda x: (int(x.split()[0]), int(x.split()[1])))
+# sys.stdout.write("".join(lst))
 
-lst = sys.stdin.readlines()[1:]
-lst.sort(key=lambda x: (int(x.split()[0]), int(x.split()[1])))
-sys.stdout.write("".join(lst))
+# s = {1, 7, 5, 4}
+# s = sorted(s)
+# print(s)
+
+lst = [[1, 4], [4, 5]]
+# temp_lst = []
+# temp_lst.append([lst[0][0], lst[1][1]])
+# print(temp_lst)
+
+print(lst)
