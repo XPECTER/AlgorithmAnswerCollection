@@ -52,6 +52,7 @@ class Sort:
 
         return lst
 
+    # merge
     def merge(self, l_lst: list, r_lst: list) -> list:
         i = j = 0
         result = []
@@ -82,8 +83,61 @@ class Sort:
 
         return self.merge(self.merge_sort(l_lst), self.merge_sort(r_lst))
 
+
+    # heap (min)
+    def __init__(self):
+        self.items = [None]
+
+    def __len__(self):
+        return len(self.items) - 1
+
+    def _percolate_up(self):
+        curr = len(self)
+        parents = curr // 2
+
+        while parents > 0:
+            if self.items[curr] < self.items[parents]:
+                self.items[curr], self.items[parents] = self.items[parents], self.items[curr]
+                curr = parents
+                parents = curr // 2
+            else:
+                break
+
+    def _percolate_down(self, val):
+        smallest = val  # index
+        left = val * 2
+        right = val * 2 + 1
+
+        if left <= len(self) and self.items[left] < self.items[smallest]:
+            smallest = left
+
+        if right <= len(self) and self.items[right] < self.items[smallest]:
+            smallest = right
+
+        if smallest != val:
+            self.items[smallest], self.items[val] = self.items[val], self.items[smallest]
+            self._percolate_down(smallest)
+
+    def heap_insert(self, val):
+        self.items.append(val)
+        self._percolate_up()
+
+    def heap_extract(self):
+        if len(self) < 1:
+            return None
+
+        root = self.items[1]
+        self.items[1] = self.items[-1]
+        self.items.pop()
+        self._percolate_down(1)
+
+        return root
+
     def heap_sort(self, lst: list) -> list:
-        return lst
+        for val in lst:
+            self.heap_insert(val)
+
+        return [self.heap_extract() for _ in range(len(lst))]
 
 
 # assert Sort().insertion_sort([-1, 5, 3, 4, 0, 8, -3]) == [-3, -1, 0, 3, 4, 5, 8]
@@ -91,5 +145,6 @@ class Sort:
 # assert Sort().bubble_sort([-1, 5, 3, 4, 0, 8, -3]) == [-3, -1, 0, 3, 4, 5, 8]
 # assert Sort().quick_sort([-1, 5, 3, 4, 0, 8, -3], 0, 6) == [-3, -1, 0, 3, 4, 5, 8]
 # print(Sort().quick_sort([45, 39, 98, 15, 52, 44, 33, 28, 40, 38, 77, 68, 11, 43], 0, 13))
-print(Sort().merge_sort([45, 39, 98, 15, 52, 44, 33, 28, 40, 38, 77, 68, 11, 43]))
-print(Sort().merge_sort([45, 3]))
+# print(Sort().merge_sort([45, 39, 98, 15, 52, 44, 33, 28, 40, 38, 77, 68, 11, 43]))
+# print(Sort().merge_sort([45, 3]))
+print(Sort().heap_sort([45, 39, 98, 15, 52, 44, 33, 28, 40, 38, 77, 68, 11, 43]))
