@@ -135,9 +135,42 @@
 # s = sorted(s)
 # print(s)
 
-lst = [[1, 4], [4, 5]]
-# temp_lst = []
-# temp_lst.append([lst[0][0], lst[1][1]])
-# print(temp_lst)
+# lst = [[1, 4], [4, 5]]
+# # temp_lst = []
+# # temp_lst.append([lst[0][0], lst[1][1]])
+# # print(temp_lst)
+#
+# print(lst)
 
-print(lst)
+
+# 6
+# 1 3 5 6 7 10
+
+# N = 6  # int(input())
+#
+# nums = [1, 3, 5, 6, 7, 10]  # list(map(int, input().split()))
+# total = sum(nums)
+#
+#
+# def DFS(level: int, sub_sum: int, idx: int):
+#     if level == N or total / 2 <= sub_sum:
+#         return False
+#
+#     if sub_sum * 2 == total:
+#         return True
+#
+#     for i in range(N):
+#         for j in range(i + idx, N):
+#             return DFS(level + 1, sub_sum + nums[i], i + 1)
+#
+#
+# res = DFS(0, 0, 0)
+#
+# if res:
+#     print("YES")
+# else:
+#     print("NO")
+
+matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]]
+
+print(list(map(lambda x: x[0], matrix)))
