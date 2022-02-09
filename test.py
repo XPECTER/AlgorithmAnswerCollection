@@ -35,142 +35,24 @@
 #     print(word)
 
 
-# import sys
-#
-# input = sys.stdin.readline
-#
-# N = int(input())
-# nodes = [[] for i in range(N)]
-#
-# for idx, val in enumerate(map(int, input().split())):
-#     if val == -1: continue
-#     nodes[val] += [idx]
-#
-# print(nodes)
-# r = int(input())
-#
-# def remove(rem):
-#     for i in nodes[rem]:
-#         remove(i)
-#     nodes[rem] = None
-#
-# remove(r)
-#
-# print(nodes)
-# print(sum([1 if i in ([], [r]) else 0 for i in nodes]))
-
-# lst = [1 if [i] in ([1,3], [0,2]) else 0 for i in range(5)]
-# print(lst)
-
-# if [] in [[], [1, 2]]:
-#     print(True)
-# else:
-#     print(False)
-
-# A = int(input())
-# B = int(input())
-# answer = [str(A*B)]
-# while B > 0:
-#     answer.append(str((B % 10) * A))
-#     B //= 10
-# print("\n".join(answer[1:]+answer[:1]))
+import sys
 
 
-# A = int(input())
-# if A % 4 == 0 and A % 100 != 0 or A % 400 == 0:
-#     print(1)
-# else:
-#     print(0)
+def getMaxAllocation(requests, N, budget):
+    sortedRequests = sorted(requests)
+    n = N
+    for i in range(N):
+        avg = budget // n
+        print(avg)
+        if sortedRequests[i] > avg:
+            return avg
+        budget -= sortedRequests[i]
+        n -= 1
+    return sortedRequests[N-1]
 
 
-# h, m = map(int, input().split())
-# if m >= 45:
-#     print(f'{h} {m-45}')
-# else:
-#     h = h-1 if h > 0 else 23
-#     m = m+15 if m < 45 else m+15-60
-#     print(f'{h} {m}')
-
-
-# import sys
-# from collections import defaultdict
-# case = int(input())
-# answer = 0
-#
-# def check_word(word: str) -> bool:
-#     if len(word) <= 1:
-#         return True
-#
-#     dic = defaultdict(list)
-#
-#     for i in range(len(word)):
-#         dic[word[i]].append(i)
-#
-#         if len(dic[word[i]]) <= 1 or i-1 in dic[word[i]]:
-#             continue
-#         else:
-#             return False
-#
-#     return True
-#
-# for i in range(case):
-#     word = sys.stdin.readline().rstrip('\n')
-#     if check_word(word):
-#         answer += 1
-#
-# print(answer)
-#
-#
-
-# # print("".join(sorted(input(), reverse=True)))
-# print(*sorted(input())[::-1], sep='')
-
-# import sys
-#
-# lst = sys.stdin.readlines()[1:]
-# lst.sort(key=lambda x: (int(x.split()[0]), int(x.split()[1])))
-# sys.stdout.write("".join(lst))
-
-# s = {1, 7, 5, 4}
-# s = sorted(s)
-# print(s)
-
-# lst = [[1, 4], [4, 5]]
-# # temp_lst = []
-# # temp_lst.append([lst[0][0], lst[1][1]])
-# # print(temp_lst)
-#
-# print(lst)
-
-
-# 6
-# 1 3 5 6 7 10
-
-# N = 6  # int(input())
-#
-# nums = [1, 3, 5, 6, 7, 10]  # list(map(int, input().split()))
-# total = sum(nums)
-#
-#
-# def DFS(level: int, sub_sum: int, idx: int):
-#     if level == N or total / 2 <= sub_sum:
-#         return False
-#
-#     if sub_sum * 2 == total:
-#         return True
-#
-#     for i in range(N):
-#         for j in range(i + idx, N):
-#             return DFS(level + 1, sub_sum + nums[i], i + 1)
-#
-#
-# res = DFS(0, 0, 0)
-#
-# if res:
-#     print("YES")
-# else:
-#     print("NO")
-
-matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]]
-
-print(list(map(lambda x: x[0], matrix)))
+if __name__ == '__main__':
+    N = int(sys.stdin.readline())
+    requests = list(map(int, sys.stdin.readline().split()))
+    budget = int(sys.stdin.readline())
+    print(getMaxAllocation(requests, N, budget))
