@@ -11,7 +11,6 @@ def solution(dirs):
             x, y = nx, ny
     return len(path) // 2
 
-
     for i in list(dirs):
         nx, ny = x + dir_dic[i][0], y + dir_dic[i][1]
         if -6 < nx < 6 and -6 < ny < 6:

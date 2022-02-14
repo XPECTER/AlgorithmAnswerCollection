@@ -35,24 +35,35 @@
 #     print(word)
 
 
+# import sys
+#
+#
+# def getMaxAllocation(requests, N, budget):
+#     sortedRequests = sorted(requests)
+#     n = N
+#     for i in range(N):
+#         avg = budget // n
+#         print(avg)
+#         if sortedRequests[i] > avg:
+#             return avg
+#         budget -= sortedRequests[i]
+#         n -= 1
+#     return sortedRequests[N-1]
+#
+#
+# if __name__ == '__main__':
+#     N = int(sys.stdin.readline())
+#     requests = list(map(int, sys.stdin.readline().split()))
+#     budget = int(sys.stdin.readline())
+#     print(getMaxAllocation(requests, N, budget))
+
 import sys
+read = sys.stdin.readline
 
+n = int(read())
+cache = []
 
-def getMaxAllocation(requests, N, budget):
-    sortedRequests = sorted(requests)
-    n = N
-    for i in range(N):
-        avg = budget // n
-        print(avg)
-        if sortedRequests[i] > avg:
-            return avg
-        budget -= sortedRequests[i]
-        n -= 1
-    return sortedRequests[N-1]
-
-
-if __name__ == '__main__':
-    N = int(sys.stdin.readline())
-    requests = list(map(int, sys.stdin.readline().split()))
-    budget = int(sys.stdin.readline())
-    print(getMaxAllocation(requests, N, budget))
+for i in range(n):
+    floor = list(map(int, read().split()))
+    cache = [max(a+c, b+c) for a, b, c in zip([0]+cache, cache+[0], floor)]
+print(max(cache))
