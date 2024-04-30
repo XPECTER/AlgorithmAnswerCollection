@@ -5,7 +5,7 @@
 
 // IDE 입력
 const inputs = require('fs')
-  .readFileSync('./inputs.txt')
+  .readFileSync('./11047.txt')
   .toString()
   .trim()
   .split('\n');

@@ -1,15 +1,14 @@
-# 코딩 테스트용 Python Code
+# 코딩 테스트 답 모음집
 
 코딩 테스트를 연습하기 위해 푼 문제들을 저장한 장소입니다.
 
-주로 Programmer 와 LeetCode 를 중심으로 풀이한 내용을 올립니다.
+프로그래머스, 리트코드, 백준의 문제들을 주로 풀었습니다.
 
-목표는 하루 한 개 코드를 올리는 것입니다.
+## 목표
+**프로그래머스** : 3000등 
 
-**항해**하는 동안 잔디를 꽉 채워보겠습니다.
+**백준** : 다아이몬드 등급
 
-> Git도 나중을 위해 미리미리 연습해봅시다.
-
-* [Go to Programmers Site](https://programmers.co.kr/)
-
-* [Go to LeetCode Site](https://leetcode.com/)
+* **프로그래머스** : [https://programmers.co.kr/](https://programmers.co.kr/)
+* **리트코드** : [https://leetcode.com/](https://leetcode.com/)
+* **백준** : [https://www.acmicpc.net/](https://www.acmicpc.net/)
