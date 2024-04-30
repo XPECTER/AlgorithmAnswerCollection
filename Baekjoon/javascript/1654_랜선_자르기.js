@@ -14,27 +14,23 @@ const [K, N] = inputs.shift().split(' ').map(Number);
 const lines = inputs.map(Number);
 
 const solution = (K, N, lines) => {
-  let maxLen = Math.floor(lines.reduce((acc, cur) => (acc += cur), 0) / N);
-  let minLen = 0;
+  let maxLen = Math.max(...lines);
+  let minLen = 1;
+  let answer = 0;
 
-  while (minLen < maxLen) {
+  while (minLen <= maxLen) {
     let middle = Math.floor((maxLen + minLen) / 2);
-    let cuts = 0;
-
-    lines.forEach((val, idx) => {
-      if (val / middle >= 1) {
-        cuts += Math.floor(val / middle);
-      }
-    });
+    let cuts = lines.reduce((acc, cur) => acc + Math.floor(cur / middle), 0);
 
     if (cuts >= N) {
       minLen = middle + 1;
-    } else if (cuts < N) {
+      answer = middle;
+    } else {
       maxLen = middle - 1;
     }
   }
 
-  return minLen;
+  return answer;
 };
 
 console.log(solution(K, N, lines));
